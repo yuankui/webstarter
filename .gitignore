@@ -1,0 +1,26 @@
+target/
+**/target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.idea
+**/*.iml
+
+# logs
+logs
+trade.log.home_IS_UNDEFINED
+
+**/*.pyc
+
+# tools
+
+tools/zhangchi
+
+# local
+local.properties
+
