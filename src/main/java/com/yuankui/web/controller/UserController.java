@@ -37,7 +37,7 @@ public class UserController {
   @GetMapping(path = "/all")
   public String getAllUsers(Model model) {
     // This returns a JSON or XML with the users
-    Iterable<User> users = userRepository.findAll();
+    Iterable<User> users = userRepository.findOne(1);
     model.addAttribute("users", users);
     return "user/list";
   }
