@@ -38,6 +38,12 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
         <!--增加mysql连接-->
+        
+        <!--lombok-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -50,6 +56,11 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok-maven-plugin</artifactId>
+                <version>1.16.4.1</version>
             </plugin>
         </plugins>
     </build>

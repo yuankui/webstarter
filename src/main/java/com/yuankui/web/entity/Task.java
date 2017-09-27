@@ -8,13 +8,15 @@ import javax.persistence.Id;
 
 import lombok.Data;
 
-@Entity // This tells Hibernate to make a table out of this class
+@Entity
 @Data
-public class User {
-
+public class Task {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Integer id;
+  
+  @Id
   private String name;
-  private String email;
+  private String body;
+
 }
