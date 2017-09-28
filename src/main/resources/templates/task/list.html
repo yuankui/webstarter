@@ -3,19 +3,26 @@
 <head>
     <meta charset="UTF-8" />
     <title>Title</title>
+    <link href="/static/css/common.css" rel="stylesheet"/>
 </head>
 <body>
 <table>
     <thead>
     <tr>
         <td>name</td>
+        <td>minThreadNum</td>
+        <td>maxThreadNum</td>
     </tr>
     </thead>
     <tbody>
     <tr th:each="task: ${tasks}">
-        <td th:text="${task.name}">xxxx</td>
+        <td th:text="${task.name}"></td>
+        <td th:text="${task.minThreadNum}"></td>
+        <td th:text="${task.maxThreadNum}"></td>
     </tr>
     </tbody>
+    
+    <a href="/task/new">新建</a>
 </table>
 </body>
 </html>

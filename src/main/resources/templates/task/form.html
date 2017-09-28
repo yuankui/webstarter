@@ -1,31 +1,74 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Title</title>
+    <link href="/static/css/common.css" rel="stylesheet"/>
 </head>
 <body>
 
-<form>
+<form target="_self" method="post" th:action="${action}"  >
+    <input type="hidden" name="id" th:value="${task.id}" />
     <table>
         <tr>
             <td>
                 <label for="name">name</label>
             </td>
             <td>
-                <input id="name" />
+                <input id="name" name="name" th:value="${task.name}" />
             </td>
         </tr>
 
         <tr>
             <td>
-                <label for="body">body</label>
+                <label for="minThreadNum">minThreadNum</label>
             </td>
             <td>
-                <textarea id="body"></textarea>
+                <input id="minThreadNum" name="minThreadNum" th:value="${task.minThreadNum}"/>
             </td>
         </tr>
+
+        <tr>
+            <td>
+                <label for="maxThreadNum">maxThreadNum</label>
+            </td>
+            <td>
+                <input id="maxThreadNum" name="maxThreadNum" th:value="${task.maxThreadNum}"/>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label for="inputConfig">inputConfig</label>
+            </td>
+            <td>
+                <textarea id="inputConfig" name="inputConfig" th:text="${task.inputConfig}"></textarea>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label for="filterConfig">filterConfig</label>
+            </td>
+            <td>
+                <textarea id="filterConfig" name="filterConfig" th:text="${task.filterConfig}"></textarea>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label for="outputConfig">outputConfig</label>
+            </td>
+            <td>
+                <textarea id="outputConfig" name="outputConfig" th:text="${task.outputConfig}"></textarea>
+            </td>
+        </tr>
+        <tr><td colspan="2">
+            <input type="submit" value="submit"/>
+        </td></tr>
     </table>
+    
+    <p th:text="${error}"></p>
 </form>
 
 </body>
