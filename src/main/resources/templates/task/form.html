@@ -13,6 +13,14 @@
 
     <link rel="stylesheet" href="../../static/bootstrap/css/bootstrap-theme.min.css"/>
     <link rel="stylesheet" href="../../static/css/common.css"/>
+    
+    <!--codemirror-->
+    
+    <script src="../../static/codemirror/codemirror.js"></script>
+    <link rel="stylesheet" href="../../static/codemirror/codemirror.css">
+    <link rel="stylesheet" href="../../static/codemirror/css/eclipse.css">
+    <script src="../../static/codemirror/js/yaml.js"></script>
+    
 </head>
 
 <body>
@@ -135,7 +143,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <input type="submit" class="btn btn-default center-block" value="保存"/>
+                    <input type="submit" class="btn btn-danger center-block" value="保存"/>
                 </td>
             </tr>
         </table>
@@ -151,5 +159,14 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="../../static/js/jquery.min.js"></script>
 <script src="../../static/bootstrap/js/bootstrap.min.js"></script>
+
+<!--codemirror-->
+<script>
+    $('textarea').each(function (i, control) {
+        var myCodeMirror = CodeMirror.fromTextArea(control, {
+            lineNumbers: true
+        });
+    })
+</script>
 </body>
 </html>
