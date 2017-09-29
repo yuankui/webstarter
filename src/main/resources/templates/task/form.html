@@ -1,26 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+      layout:decorator="layout/layout">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-    <title>Starter Template for Bootstrap</title>
+    <!--TODO remove duplicated header-->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--form  The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <link rel="icon" href="../../favicon.ico" />
+    <title>任务详情</title>
     <link rel="stylesheet" href="../../static/bootstrap/css/bootstrap.min.css"/>
 
     <link rel="stylesheet" href="../../static/bootstrap/css/bootstrap-theme.min.css"/>
     <link rel="stylesheet" href="../../static/css/common.css"/>
     
     <!--codemirror-->
-    
     <script src="../../static/codemirror/codemirror.js"></script>
-    <link rel="stylesheet" href="../../static/codemirror/codemirror.css">
-    <link rel="stylesheet" href="../../static/codemirror/css/eclipse.css">
-    <script src="../../static/codemirror/js/yaml.js"></script>
-    
+    <link rel="stylesheet" href="../../static/codemirror/codemirror.css" />
+    <link rel="stylesheet" href="../../static/codemirror/css/eclipse.css" />
+    <script src="../../static/codemirror/js/yaml.js"></script>    
 </head>
 
 <body>
@@ -49,47 +50,48 @@
 
 <div class="container">
 
-    <p></p>
+    <th:block layout:fragment="content">
+        <p></p>
 
-    <form target="_self" method="post" th:action="${action}">
-        <input type="hidden" name="id" th:value="${task.id}"/>
+        <form target="_self" method="post" th:action="${action}">
+            <input type="hidden" name="id" th:value="${task.id}"/>
 
-        <table class="table">
-            <tr>
-                <td>
-                    <label for="name">name</label>
-                </td>
-                <td>
-                    <input id="name" name="name" class="form-control" th:value="${task.name}"
-                           value="buyer_order"/>
-                </td>
-            </tr>
+            <table class="table">
+                <tr>
+                    <td>
+                        <label for="name">name</label>
+                    </td>
+                    <td>
+                        <input id="name" name="name" class="form-control" th:value="${task.name}"
+                               value="buyer_order"/>
+                    </td>
+                </tr>
 
-            <tr>
-                <td>
-                    <label for="minThreadNum">minThreadNum</label>
-                </td>
-                <td>
-                    <input id="minThreadNum" class="form-control" name="minThreadNum"
-                           th:value="${task.minThreadNum}" value="3"/>
-                </td>
-            </tr>
+                <tr>
+                    <td>
+                        <label for="minThreadNum">minThreadNum</label>
+                    </td>
+                    <td>
+                        <input id="minThreadNum" class="form-control" name="minThreadNum"
+                               th:value="${task.minThreadNum}" value="3"/>
+                    </td>
+                </tr>
 
-            <tr>
-                <td>
-                    <label for="maxThreadNum">maxThreadNum</label>
-                </td>
-                <td>
-                    <input id="maxThreadNum" class="form-control" name="maxThreadNum"
-                           th:value="${task.maxThreadNum}" value="10"/>
-                </td>
-            </tr>
+                <tr>
+                    <td>
+                        <label for="maxThreadNum">maxThreadNum</label>
+                    </td>
+                    <td>
+                        <input id="maxThreadNum" class="form-control" name="maxThreadNum"
+                               th:value="${task.maxThreadNum}" value="10"/>
+                    </td>
+                </tr>
 
-            <tr>
-                <td>
-                    <label for="inputConfig">inputConfig</label>
-                </td>
-                <td>
+                <tr>
+                    <td>
+                        <label for="inputConfig">inputConfig</label>
+                    </td>
+                    <td>
                     <textarea id="inputConfig" class="form-control yaml" name="inputConfig"
                               th:text="${task.inputConfig}">
 - componentType: NsqInput
@@ -98,14 +100,14 @@
     nsqLookup: ${nsq.lookup}
     channel: ${nsq.channel}
     order: true</textarea>
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
-            <tr>
-                <td>
-                    <label for="filterConfig">filterConfig</label>
-                </td>
-                <td>
+                <tr>
+                    <td>
+                        <label for="filterConfig">filterConfig</label>
+                    </td>
+                    <td>
                     <textarea id="filterConfig" class="form-control" name="filterConfig"
                               th:text="${task.filterConfig}">- componentType: FieldFilter
   config:
@@ -119,14 +121,14 @@
     # merge order_no into logistics_term
     sql: 'select * from tc_logistics_term where contract_id = ${contract_id} and sharding_id = ${sharding_id} limit 1'
 </textarea>
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
-            <tr>
-                <td>
-                    <label for="outputConfig">outputConfig</label>
-                </td>
-                <td>
+                <tr>
+                    <td>
+                        <label for="outputConfig">outputConfig</label>
+                    </td>
+                    <td>
                     <textarea id="outputConfig" class="form-control" name="outputConfig"
                               th:text="${task.outputConfig}">- componentType: HBaseOutput
   config:
@@ -139,17 +141,19 @@
     rowkeyGenerator: OrderRowkeyGenerator
     cellGenerator: 
       - ColumnCellGenerator</textarea>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <input type="submit" class="btn btn-danger center-block" value="保存"/>
-                </td>
-            </tr>
-        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" class="btn btn-danger center-block" value="保存"/>
+                    </td>
+                </tr>
+            </table>
 
-        <p th:text="${error}"></p>
-    </form>
+            <p th:text="${error}"></p>
+        </form>
+    </th:block>
+    
 
 </div><!-- /.container -->
 

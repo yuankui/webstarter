@@ -40,19 +40,42 @@
 
 <div class="container">
 
-    <table class="table">
+    <table class="table table-responsive">
         <thead>
         <tr>
-            <td>name</td>
-            <td>minThreadNum</td>
-            <td>maxThreadNum</td>
+            <th>任务名</th>
+            <th>最小线程数</th>
+            <th>最大线程数</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="task: ${tasks}">
-            <td th:text="${task.name}">task 1</td>
-            <td th:text="${task.minThreadNum}">1</td>
+            <td th:text="${task.name}">
+                <a href="#">buyer_order</a>
+            </td>
+            <td th:text="${task.minThreadNum}">5</td>
             <td th:text="${task.maxThreadNum}">10</td>
+        </tr>
+        <tr th:remove="all">
+            <td>
+                <a href="#">tc_order</a>
+            </td>
+            <td>5</td>
+            <td>10</td>
+        </tr>
+        <tr th:remove="all">
+            <td>
+                <a href="#">tc_order_item</a>
+            </td>
+            <td>5</td>
+            <td>10</td>
+        </tr>
+        <tr th:remove="all">
+            <td>
+                <a href="#">order_payment</a>
+            </td>
+            <td>5</td>
+            <td>10</td>
         </tr>
         </tbody>
 

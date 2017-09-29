@@ -6,12 +6,12 @@ body {
     text-align: center;
 }
 
-tr td:first-of-type {
+form tr td:first-of-type {
     width: 10%;
     text-align: right;
 }
 
-tr td:last-of-type {
+form tr td:last-of-type {
     width: 80%;
 }
 
