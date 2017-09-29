@@ -92,12 +92,12 @@
                 <td>
                     <textarea id="inputConfig" class="form-control yaml" name="inputConfig"
                               th:text="${task.inputConfig}">
-  - componentType: NsqInput
-    config: 
-      topic: binlog_order_seller_sync_localorder
-      nsqLookup: ${nsq.lookup}
-      channel: ${nsq.channel}
-      order: true</textarea>
+- componentType: NsqInput
+  config: 
+    topic: binlog_order_seller_sync_localorder
+    nsqLookup: ${nsq.lookup}
+    channel: ${nsq.channel}
+    order: true</textarea>
                 </td>
             </tr>
 
@@ -107,17 +107,17 @@
                 </td>
                 <td>
                     <textarea id="filterConfig" class="form-control" name="filterConfig"
-                              th:text="${task.filterConfig}">  - componentType: FieldFilter
-    config:
-      whiteFields:
-        - order_no
-        - sharding_id
-        - contract_id
-  - componentType: MysqlJoinFilter
-    config:
-      url: '${tc.rds.url}'
-      # merge order_no into logistics_term
-      sql: 'select * from tc_logistics_term where contract_id = ${contract_id} and sharding_id = ${sharding_id} limit 1'
+                              th:text="${task.filterConfig}">- componentType: FieldFilter
+  config:
+    whiteFields:
+      - order_no
+      - sharding_id
+      - contract_id
+- componentType: MysqlJoinFilter
+  config:
+    url: '${tc.rds.url}'
+    # merge order_no into logistics_term
+    sql: 'select * from tc_logistics_term where contract_id = ${contract_id} and sharding_id = ${sharding_id} limit 1'
 </textarea>
                 </td>
             </tr>
@@ -128,17 +128,17 @@
                 </td>
                 <td>
                     <textarea id="outputConfig" class="form-control" name="outputConfig"
-                              th:text="${task.outputConfig}">  - componentType: HBaseOutput
-    config:
-      zookeeper: ${hbase.zookeeper.quorum}
-      uniqueKey:
-        - order_no
-      targetKey:
-        - order_no
-      tableName: ${hbase.order.table}
-      rowkeyGenerator: OrderRowkeyGenerator
-      cellGenerator: 
-        - ColumnCellGenerator</textarea>
+                              th:text="${task.outputConfig}">- componentType: HBaseOutput
+  config:
+    zookeeper: ${hbase.zookeeper.quorum}
+    uniqueKey:
+      - order_no
+    targetKey:
+      - order_no
+    tableName: ${hbase.order.table}
+    rowkeyGenerator: OrderRowkeyGenerator
+    cellGenerator: 
+      - ColumnCellGenerator</textarea>
                 </td>
             </tr>
             <tr>
