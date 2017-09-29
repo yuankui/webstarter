@@ -1,7 +1,20 @@
 body {
-    padding-top: 50px;
+    padding-top: 100px;
 }
 .starter-template {
     padding: 40px 15px;
     text-align: center;
+}
+
+tr td:first-of-type {
+    width: 10%;
+    text-align: right;
+}
+
+tr td:last-of-type {
+    width: 80%;
+}
+
+form textarea.form-control {
+    height: 400px;
 }
